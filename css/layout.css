@@ -1,0 +1,243 @@
+@font-face {
+  font-family: 'iconfont';  /* project id 495201 */
+  src: url('http://at.alicdn.com/t/font_495201_z7wezornhcq2rzfr.eot');
+  src: url('http://at.alicdn.com/t/font_495201_z7wezornhcq2rzfr.eot?#iefix') format('embedded-opentype'),
+  url('http://at.alicdn.com/t/font_495201_z7wezornhcq2rzfr.woff') format('woff'),
+  url('http://at.alicdn.com/t/font_495201_z7wezornhcq2rzfr.ttf') format('truetype'),
+  url('http://at.alicdn.com/t/font_495201_z7wezornhcq2rzfr.svg#iconfont') format('svg');
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size: 3vh;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-stop:before { content: "\e621"; }
+
+.icon-play:before { content: "\e61d"; }
+
+.icon-forward:before { content: "\e62c"; }
+
+.icon-backward:before { content: "\e62d"; }
+
+.icon-like:before { content: "\e641"; }
+
+.icon-shoucang25:before { content: "\e697"; }
+
+.icon-earphone:before { content: "\e61a"; }
+
+.icon-pre:before { content: "\e656"; }
+
+.icon-next:before { content: "\e657"; }
+
+
+body, html, ul, li, a, h3, span, p {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  color: #ccc;
+}
+
+html, body, .wrap {
+  height: 100%;
+  overflow: hidden;
+}
+
+.layout {
+  padding-top: 13vh;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.layout .header .detail {
+  float: left;
+}
+
+.header .detail .img {
+  height: 46vh;
+  width: 46vh;
+  background-size: cover;
+}
+
+.header .detail .icon {
+  display: flex;
+  width: 46vh;
+  text-align: center;
+}
+
+.icon span {
+  display: inline-block;
+  margin: 7vh 0;
+  flex: 1;
+
+}
+
+.icon span a {
+  color: #888;
+  opacity: 0.8;
+  transition: all .5s;
+}
+
+.icon span a:hover {
+  color: #fff;
+  opacity: 0.8;
+}
+
+.header .player {
+  margin-left: 56vh;
+}
+
+.header .player .tag {
+  display: inline-block;
+  font-size: 2vh;
+  padding: .4em .8em;
+  background: rgba(0,0,0,0.2);
+}
+
+.header .player h3 {
+  font-size: 5vh;
+}
+
+.header .player .like {
+  display: flex;
+  padding: 13vh 0;
+  width: 65vh;
+}
+
+.header .player span {
+  flex: 1;
+}
+
+.header .player .time{
+  width: 65vh;
+  border: 1px solid rgba(0,0,0,0);
+}
+
+.time .bar {
+  position: relative;
+  margin: 2vh 6vh 2vh 0;
+  border-top: 5px solid rgba(255,255,255,0.2);
+}
+
+.time .bar .progress {
+  position: absolute;
+  left: 0;
+  top: -5px;
+  width: 10%;
+  border-top: 5px solid #ccc;
+}
+
+.time .count {
+  float: right;
+  font-size: 2vh;
+  margin: calc(2vh + 2px) 0 2vh 0;
+  line-height: 0;
+}
+
+.player .singer {
+  font-size: 3vh;
+  padding: 1vh 0;
+}
+
+.footer {
+  background: rgba(188,188,188,0.2);
+}
+
+.footer .layout {
+  position: relative;
+  padding: 0;
+}
+
+
+.footer .pre,
+.footer .next {
+  display: none;
+  font-size: 4vh;
+  position: absolute;
+  top: 8vh;
+  color: #666;
+  opacity: 0.4;
+}
+
+.footer:hover .pre,
+.footer:hover .next {
+  display: block;
+  transition: all 1s;
+}
+
+.pre:hover,
+.next:hover {
+  color: #fff;
+
+}
+
+.pre {
+  left: -10vh;
+}
+
+.next {
+  right: -10vh;
+}
+
+
+.bg {
+  position: absolute;
+  top: -10px;
+  bottom: -10px;
+  left: -10px;
+  right: -10px;
+  background-size: cover;
+  filter: blur(4px);
+  z-index: -1;
+}
+
+.bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.4);
+}
+
+.footer ul {
+  padding: 2.5vh 0;
+}
+
+.group {
+  float: left;
+  margin: 0 4vh;
+}
+
+.group .content {
+  width: 18vh;
+  text-align: center;
+  cursor: pointer;
+  transition: all .5s;
+}
+
+.group .content:hover {
+  box-shadow: 1px 1px 10px 1px;
+}
+
+.group .content .img {
+  width: 18vh;
+  height: 15vh;
+  background-size: cover;
+}
+
+.group .content p {
+  font-size: 1.5vh;
+  padding: 1vh;
+}
+
+.clearfix:after {
+  content: '';
+  display: block;
+  clear: both;
+}
