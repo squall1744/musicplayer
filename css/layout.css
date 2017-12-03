@@ -144,12 +144,15 @@ html, body, .wrap {
 }
 
 .footer {
+  position: relative;
+  height: 24vh;
   background: rgba(188,188,188,0.2);
 }
 
 .footer .layout {
   position: relative;
-  padding: 0;
+  height: 24vh;
+  overflow: hidden;
 }
 
 
@@ -176,11 +179,11 @@ html, body, .wrap {
 }
 
 .pre {
-  left: -10vh;
+  left: 25vh;
 }
 
 .next {
-  right: -10vh;
+  right: 25vh;
 }
 
 
@@ -206,12 +209,14 @@ html, body, .wrap {
 }
 
 .footer ul {
-  padding: 2.5vh 0;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .group {
   float: left;
-  margin: 0 4vh;
+  margin: 2vh 2vh;
 }
 
 .group .content {
