@@ -144,17 +144,24 @@ html, body, .wrap {
 }
 
 .footer {
-  position: relative;
   height: 24vh;
   background: rgba(188,188,188,0.2);
 }
 
+
 .footer .layout {
   position: relative;
   height: 24vh;
-  overflow: hidden;
+  padding: 0;
 }
 
+.footer .album {
+  position: relative;
+  height: 24vh;
+  margin: 0;
+  padding: 0;
+  overflow:hidden;
+}
 
 .footer .pre,
 .footer .next {
@@ -179,11 +186,11 @@ html, body, .wrap {
 }
 
 .pre {
-  left: 25vh;
+  left: -10vh;
 }
 
 .next {
-  right: 25vh;
+  right: -10vh;
 }
 
 
@@ -230,7 +237,7 @@ html, body, .wrap {
   box-shadow: 1px 1px 10px 1px;
 }
 
-.group .content .img {
+.group .content .albumImg {
   width: 18vh;
   height: 15vh;
   background-size: cover;
