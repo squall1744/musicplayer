@@ -17,7 +17,7 @@ var Footer = {
     this.end = false
     this.start = true
 	this.isAnimatie = false
-	
+
     this.bind()
     this.render()
   },
@@ -61,7 +61,7 @@ var Footer = {
         })
       }
     })
-	
+
 	_this.$footer.on('click', 'li', function() {
 		EventCenter.fire('select-album', {
 		  channelId: $(this).attr('data-channel-id'),
@@ -109,11 +109,11 @@ var Footer = {
 var Fm = {
 	init: function() {
 	  this.$container = $('.wrap')
-	  this.bind()
 	  this.audio = new Audio()
 	  this.audio.autoplay = true
+    this.bind()
 	},
-	
+
 	bind: function() {
 	  var _this = this
 	  EventCenter.on('select-album', function(event, channelObj){
@@ -121,28 +121,53 @@ var Fm = {
 		  _this.channelName = channelObj.channelName
 		  _this.loadMusic(function(){
 			  _this.setMusic()
+        if(_this.audio.autoplay) {
+          _this.$container.find('.btn-play').removeClass('icon-play').addClass('icon-stop')
+        }
 		  })
 	  })
-	  
+
 	 _this.$container.find('.btn-play').on('click', function(){
 		 if($(this).hasClass('icon-play')) {
 			 $(this).removeClass('icon-play').addClass('icon-stop')
-			 _this.audio.pause()
+			 _this.audio.play()
 		 }else {
 			$(this).removeClass('icon-stop').addClass('icon-play')
-			_this.audio.play()
-		 } 	  
+			_this.audio.pause()
+		 }
 	  })
-	  
+
 	  _this.$container.find('.icon-forward').on('click', function(){
 		  _this.loadMusic(function(){
 			  _this.setMusic()
+        if(_this.audio.autoplay) {
+          _this.$container.find('.btn-play').removeClass('icon-play').addClass('icon-stop')
+        }
 		  })
 	  })
-	  
-	  
+
+    _this.audio.addEventListener('play', function(){
+      clearInterval(_this.clock)
+      _this.clock = setInterval(function(){
+        _this.updataStatus()
+      },1000)
+    })
+
+    _this.audio.addEventListener('pause', function(){
+      clearInterval(_this.clock)
+    })
+
+    _this.audio.addEventListener('ended', function(){
+      _this.loadMusic(function(){
+			  _this.setMusic()
+        if(_this.audio.autoplay) {
+          _this.$container.find('.btn-play').removeClass('icon-play').addClass('icon-stop')
+        }
+		  })
+    })
+
 	},
-	
+
 	loadMusic: function(callback) {
 		var _this = this
 	  $.getJSON('http://api.jirengu.com/fm/getSong.php',{channel: this.channelId})
@@ -153,18 +178,26 @@ var Fm = {
 		  console.log('error')
 	    })
 	},
-	
-	setMusic: function(){
+
+	setMusic: function() {
 	  this.audio.src = this.song.url
 	  $('.img').css('background-image', 'url(' + this.song.picture + ')')
 	  $('.player h3').text(this.song.title)
 	  $('.player .singer').text(this.song.artist)
 	  $('.player .tag').text(this.channelName)
 	},
+
+  updataStatus: function() {
+    var min = Math.floor(this.audio.currentTime/60)
+    var sec = Math.floor(this.audio.currentTime%60)
+    var time
+    sec = sec>=10?sec:'0'+sec
+    time = min + ':' + sec
+    this.$container.find('.time .count').text(time)
+    this.$container.find('.bar .progress').css('width', this.audio.currentTime/this.audio.duration*100 + '%')
+  },
 }
 
 
 Footer.init()
 Fm.init()
-
-

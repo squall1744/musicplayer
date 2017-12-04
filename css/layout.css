@@ -127,8 +127,9 @@ html, body, .wrap {
   position: absolute;
   left: 0;
   top: -5px;
-  width: 10%;
+  width: 0;
   border-top: 5px solid #ccc;
+  transition: width .8s;
 }
 
 .time .count {
